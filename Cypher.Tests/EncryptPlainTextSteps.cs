@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FluentAssertions;
+﻿using FluentAssertions;
 using TechTalk.SpecFlow;
 
 namespace Cypher.Tests
@@ -25,7 +22,7 @@ namespace Cypher.Tests
 
             foreach (var tableRow in table.Rows)
             {
-                cypher.Substitute(tableRow[0]).For(tableRow[1]);
+                cypher.Substitute(tableRow[0][0]).For(tableRow[1][0]);
             }
 
             _encryptedText = cypher.Encrypt(_plainText);
@@ -35,65 +32,6 @@ namespace Cypher.Tests
         public void ThenTheCypherTextShouldBe(string expectedCypherText)
         {
             _encryptedText.Should().Be(expectedCypherText);
-        }
-    }
-
-    public class SubstitutionCypher
-    {
-        private readonly List<Substitution> _substitutionList;
-
-        public SubstitutionCypher()
-        {
-            _substitutionList = new List<Substitution>();
-        }
-
-        public Substitution Substitute(string letterToSubstitute)
-        {
-            var substitution = new Substitution(letterToSubstitute.ToUpper());
-
-            _substitutionList.Add(substitution);
-
-            return substitution;
-        }
-
-        public string Encrypt(string plainText)
-        {
-            var encryptedText = "";
-            foreach (var letter in plainText.ToUpper())
-            {
-                var substitution = _substitutionList.SingleOrDefault(
-                    s => s.LetterToSubstitute.Equals(letter.ToString(), StringComparison.OrdinalIgnoreCase));
-
-                if (substitution != null)
-                {
-                    encryptedText += substitution.LetterToSubstituteWith;
-                }
-                else
-                {
-                    encryptedText += letter;
-                }
-            }
-
-            return encryptedText;
-        }
-    }
-
-    public static class SubstitutionExtensionMethods
-    {
-        public static void For(this Substitution substitution, string letterToSubstituteWith)
-        {
-            substitution.LetterToSubstituteWith = letterToSubstituteWith.ToUpper();
-        }
-    }
-
-    public class Substitution
-    {
-        public string LetterToSubstitute { get; }
-        public string LetterToSubstituteWith { get; set; }
-
-        public Substitution(string letterToSubstitute)
-        {
-            LetterToSubstitute = letterToSubstitute;
         }
     }
 }

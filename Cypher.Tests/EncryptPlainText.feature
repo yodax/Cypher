@@ -9,7 +9,7 @@
 Scenario: A simple plain text using all letters from the alphabet
 	Given the plain text
 	"""
-	the quick brown fox jumps over the lazy dog
+	the quick brown fox jumps over the lazy dog!
 	"""
 	When I encrypt the text using the following letter substitution
 	| Plain text letter | Cypher text letter |
@@ -41,6 +41,6 @@ Scenario: A simple plain text using all letters from the alphabet
 	| Z                 | A                  |
 	Then the cypher text should be
 	"""
-	UIF RVJDL CSPXO GPY KVNQT PWFS UIF MBAZ EPH
+	UIF RVJDL CSPXO GPY KVNQT PWFS UIF MBAZ EPH!
 	"""
 	

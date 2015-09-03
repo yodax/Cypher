@@ -78,7 +78,7 @@ My plain and text will be case insensitive and punctuation marks will not be enc
 this.ScenarioSetup(scenarioInfo);
 #line hidden
 #line 10
- testRunner.Given("the plain text", "the quick brown fox jumps over the lazy dog", ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the plain text", "the quick brown fox jumps over the lazy dog!", ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Plain text letter",
@@ -165,7 +165,7 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("I encrypt the text using the following letter substitution", ((string)(null)), table1, "When ");
 #line hidden
 #line 42
- testRunner.Then("the cypher text should be", "UIF RVJDL CSPXO GPY KVNQT PWFS UIF MBAZ EPH", ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the cypher text should be", "UIF RVJDL CSPXO GPY KVNQT PWFS UIF MBAZ EPH!", ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
