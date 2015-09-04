@@ -6,8 +6,8 @@ namespace Cypher.Tests
     [Binding]
     public class EncryptPlainTextSteps
     {
-        private string _plainText;
         private string _encryptedText;
+        private string _plainText;
 
         [Given(@"the plain text")]
         public void GivenThePlainText(string plainText)
@@ -27,7 +27,7 @@ namespace Cypher.Tests
 
             _encryptedText = cypher.Encrypt(_plainText);
         }
-        
+
         [Then(@"the cypher text should be")]
         public void ThenTheCypherTextShouldBe(string expectedCypherText)
         {
